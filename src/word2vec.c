@@ -24,7 +24,7 @@
 #define MAX_SENTENCE_LENGTH 1000
 #define MAX_CODE_LENGTH 40
 
-const int vocab_hash_size = 30000000;  // Maximum 30 * 0.7 = 21M words in the vocabulary
+const int vocab_hash_size = 90000000;  // Maximum 90 * 0.7 = 63M words in the vocabulary
 
 typedef float real;                    // Precision of float numbers
 
