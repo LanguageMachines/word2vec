@@ -104,7 +104,9 @@ int main(int argc, char **argv) {
     }
     if (b == 0) continue;
     printf("\n                                              Word              Distance\n------------------------------------------------------------------------\n");
-    for (a = 0; a < size; a++) vec[a] = M[a + bi[1] * size] - M[a + bi[0] * size] + M[a + bi[2] * size];
+    for (a = 0; a < size; a++){
+      vec[a] = M[a + bi[1] * size] - M[a + bi[0] * size] + M[a + bi[2] * size];
+    }
     len = 0;
     for (a = 0; a < size; a++) len += vec[a] * vec[a];
     len = sqrt(len);
@@ -112,14 +114,21 @@ int main(int argc, char **argv) {
     for (a = 0; a < N; a++) bestd[a] = 0;
     for (a = 0; a < N; a++) bestw[a][0] = 0;
     for (c = 0; c < words; c++) {
-      if (c == bi[0]) continue;
-      if (c == bi[1]) continue;
-      if (c == bi[2]) continue;
-      a = 0;
-      for (b = 0; b < cn; b++) if (bi[b] == c) a = 1;
-      if (a == 1) continue;
+      if (c == bi[0]) {
+	//	printf( "skip %s\n" , st[0] );
+	continue;
+      }
+      if (c == bi[1]) {
+	//	printf( "skip %s\n" , st[1] );
+	continue;
+      }
+      if (c == bi[2]) {
+	//	printf( "skip %s\n" , st[2] );
+	continue;
+      }
       dist = 0;
       for (a = 0; a < size; a++) dist += vec[a] * M[a + c * size];
+
       for (a = 0; a < N; a++) {
         if (dist > bestd[a]) {
           for (d = N - 1; d > a; d--) {
